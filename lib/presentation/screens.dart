@@ -17,3 +17,4 @@ export 'screens/professionals/professionals_home_screen.dart';
 export 'screens/professionals/professional_verification_screen.dart';
 export 'screens/professionals/professionals_chats_list_screen.dart';
 export 'screens/professionals/professional_profile_screen.dart';
+export 'screens/professionals/job_offer_detail_screen.dart';
