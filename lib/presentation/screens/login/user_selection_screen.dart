@@ -73,7 +73,7 @@ class _RoleButton extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
               blurRadius: 18,
-              offset: const Offset(0, 8),
+              offset: const Offset(0, 2),
             )
           ],
         ),

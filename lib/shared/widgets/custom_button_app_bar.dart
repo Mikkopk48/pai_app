@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pai/config/router/app_router.dart';
 
 import '../../config/theme/app_theme.dart';
 

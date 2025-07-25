@@ -11,6 +11,7 @@ class ReviewCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Card(
+        color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

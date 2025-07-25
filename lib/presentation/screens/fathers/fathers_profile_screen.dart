@@ -64,7 +64,7 @@ class _FathersProfileScreenState extends State<FathersProfileScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfileCard(
+                  _ProfileCard(
                     profileData: profileData!,
                   ),
                   const SizedBox(height: 16),
@@ -91,9 +91,8 @@ class _FathersProfileScreenState extends State<FathersProfileScreen> {
   }
 }
 
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    super.key,
+class _ProfileCard extends StatelessWidget {
+  const _ProfileCard({
     required this.profileData,
   });
 
@@ -120,7 +119,9 @@ class ProfileCard extends StatelessWidget {
                     style: const TextStyle(fontSize: 20),
                   ),
                   Text(
-                    'Condición/es de su hijo: ${profileData['conditionChild']}',
+                    'Condición/es de su hijo:',
+                  ),Text(
+                    profileData['conditionChild']
                   ),
                   Row(
                     children: [

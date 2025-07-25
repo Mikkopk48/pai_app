@@ -41,7 +41,7 @@ class FathersChildData1Screen extends StatelessWidget {
                       label: 'Colegio:',
                     ),
                      SizedBox(
-                      height: height*0.20,
+                      height: 100,
                     ),
                   ],
                 ),
@@ -53,7 +53,7 @@ class FathersChildData1Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(18.0),
                 child: CustomBigButton(
                   text: 'Continuar',
-                  onPressed: () => context.push('/professionals_data2'),
+                  onPressed: () => context.push('/fathers_child_data2'),
                 ),
               )
             ],

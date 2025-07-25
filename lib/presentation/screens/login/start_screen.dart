@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pai/config/theme/app_theme.dart';
 import 'package:pai/shared/widgets/widgets.dart';
 
 class StartScreen extends StatelessWidget {
@@ -49,13 +50,16 @@ class StartScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => context.push('/register_screen'),
-                child: Text(
+                child: const Text(
                   'Registrate',
                   style: TextStyle(
-                      color: secondary,
+                      color: AppColors.primary,
                       fontSize: 18,
                       fontWeight: FontWeight.w900),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
             ],
           ),

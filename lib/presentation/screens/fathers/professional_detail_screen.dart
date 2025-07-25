@@ -200,25 +200,21 @@ class _ProfileCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          professionalData!['lookingJob'] == true
-                              ? 'Busca trabajo'
-                              : 'No busca trabajo',
-                          style:
-                              Theme.of(context).textTheme.smallBoldTextOrange,
-                        ),
-                        const SizedBox(width: 10),
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          label: const Text('Puntuar'),
-                          icon: const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      professionalData!['lookingJob'] == true
+                          ? 'Busca trabajo'
+                          : 'No busca trabajo',
+                      style:
+                          const TextStyle(fontSize: 20,color: Colors.green,fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      label: const Text('Puntuar'),
+                      icon: const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
                     ),
                   ],
                 ),
