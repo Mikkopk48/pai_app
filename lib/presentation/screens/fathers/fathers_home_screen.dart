@@ -13,14 +13,15 @@ class FathersHomeScreen extends StatefulWidget {
 class _FathersHomeScreenState extends State<FathersHomeScreen> {
   final Map<String, dynamic> professionalsResonse = {
     'professionals': List.generate(
-        20,
-        (index) => {
-              'id': index + 1,
-              'name': 'Profesional ${index + 1}',
-              'location': 'Corrientes',
-              'stars': 3.2,
-              'degree': 'profesional de apoyo a la integación'
-            })
+      20,
+      (index) => {
+        'id': index + 1,
+        'name': 'Profesional ${index + 1}',
+        'location': 'Corrientes',
+        'stars': 3.2,
+        'degree': 'profesional de apoyo a la integración'
+      },
+    )
   };
 
   List<dynamic> professionalsList = [];
@@ -32,7 +33,7 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
   }
 
   Future<void> _loadProfessionals() async {
-    Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     setState(() {
       professionalsList = professionalsResonse['professionals'];
     });
@@ -41,25 +42,20 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
           const CustomAppBar(text: 'Profesionales Disponibles'),
           const SearchBox(),
           Expanded(
             child: professionalsList.isEmpty
                 ? const Center(child: CircularProgressIndicator())
-                : professionalsList.isEmpty
-                    ? const Center(
-                        child: Text('No se encontraron profesionales.'))
-                    : SmallCard(elementsList: professionalsList),
+                : SmallCard(elementsList: professionalsList),
           ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const AiFloatingActionButton(),
-      bottomNavigationBar: const CustomButtonAppBar(
-        isFather: true,
-      ),
+      bottomNavigationBar: const CustomButtonAppBar(isFather: true),
     );
   }
 }
