@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pai/config/theme/app_theme.dart';
 import 'package:pai/shared/widgets/widgets.dart';
@@ -26,8 +25,8 @@ class StartScreen extends StatelessWidget {
               child: Image.asset(
                 'assets/images/logo_pai.png',
                 // 'assets/icons/logo_plus.svg',
-                height: 400,
-                width: 300,
+                height: height * 0.5,
+                // width: 400,
               ),
             ),
             Padding(
