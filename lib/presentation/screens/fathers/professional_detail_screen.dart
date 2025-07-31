@@ -64,36 +64,34 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: professionalData == null
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CustomAppBar(text: 'Su perfil'),
-                    _ProfileCard(professionalData: professionalData),
-                    _AboutProfessionalCard(professionalData: professionalData),
-                    const CustomBigButton(text: 'Enviar mensaje',color: AppColors.primary,),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Opiniones',
-                        style: Theme.of(context).textTheme.cardTitleTextStyle,
-                      ),
+    return Scaffold(
+      body: professionalData == null
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomAppBar(text: 'Su perfil'),
+                  _ProfileCard(professionalData: professionalData),
+                  _AboutProfessionalCard(professionalData: professionalData),
+                  const CustomBigButton(text: 'Enviar mensaje',color: AppColors.primary,),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Opiniones',
+                      style: Theme.of(context).textTheme.cardTitleTextStyle,
                     ),
-                    ...reviewsList.map(
-                      (review) => ReviewCard(review: review),
-                    ),
-                    const SizedBox(height: 100),
-                  ],
-                ),
+                  ),
+                  ...reviewsList.map(
+                    (review) => ReviewCard(review: review),
+                  ),
+                  const SizedBox(height: 100),
+                ],
               ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: const AiFloatingActionButton(),
-        bottomNavigationBar: const CustomButtonAppBar(isFather: true,),
-      ),
+            ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const AiFloatingActionButton(),
+      bottomNavigationBar: const CustomButtonAppBar(isFather: true,),
     );
   }
 }

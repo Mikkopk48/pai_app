@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pai/config/router/app_router.dart';
 
 import 'package:pai/config/theme/theme.dart';
 import 'package:pai/presentation/providers/providers.dart';
@@ -16,70 +15,68 @@ class FathersChildData2Screen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isVisible = ref.watch(textfieldVisibilityProvider);
     final height = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: height * 0.03,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Text('Datos de su hijo',
+                style: Theme.of(context).textTheme.cardTitleTextStyle),
+            CustomCard(
+              child: Column(
+                children: [
+                  Text('Condicion de su hijo',
+                      style: Theme.of(context).textTheme.cardTitleTextStyle),
+                  const _ConditionSelector(),
+                  Visibility(
+                    visible: isVisible,
+                    child: const _ConditionSelector(),
+                  ),
+                  Visibility(
+                    visible: isVisible,
+                    child: const _ConditionSelector(),
+                  ),
+                  SizedBox(height: height * 0.01),
+                  TextButton(
+                    onPressed: () {
+                      ref.read(textfieldVisibilityProvider.notifier).state =
+                          !ref.read(textfieldVisibilityProvider);
+                    },
+                    child: Text(
+                      isVisible ? '- No mostrar' : '+ Agregar otra condicion',
+                      style: Theme.of(context).textTheme.smallBoldTextOrange,
+                    ),
+                  ),
+                  SizedBox(height: height * 0.03),
+                  const Divider(
+                    color: Color(0xFFA2A2A2),
+                    thickness: 1,
+                    height: 5,
+                  ),
+                  SizedBox(height: height * 0.03),
+                  Row(
+                    children: [
+                      Text("CUD",
+                          style:
+                              Theme.of(context).textTheme.cardTitleTextStyle),
+                      const Text(
+                          "  Opcional \n (certificado de discapacidad)",
+                          style: TextStyle(fontSize: 12)),
+                    ],
+                  ),
+                  SizedBox(height: height * 0.04),
+                  const ImagePickerContainer(),
+                  SizedBox(height: height * 0.04),
+                  CustomBigButton(
+                    text: 'Continuar',
+                    onPressed: () => context.push('/fathers_home_screen'),
+                  )
+                ],
               ),
-              Text('Datos de su hijo',
-                  style: Theme.of(context).textTheme.cardTitleTextStyle),
-              CustomCard(
-                child: Column(
-                  children: [
-                    Text('Condicion de su hijo',
-                        style: Theme.of(context).textTheme.cardTitleTextStyle),
-                    const _ConditionSelector(),
-                    Visibility(
-                      visible: isVisible,
-                      child: const _ConditionSelector(),
-                    ),
-                    Visibility(
-                      visible: isVisible,
-                      child: const _ConditionSelector(),
-                    ),
-                    SizedBox(height: height * 0.01),
-                    TextButton(
-                      onPressed: () {
-                        ref.read(textfieldVisibilityProvider.notifier).state =
-                            !ref.read(textfieldVisibilityProvider);
-                      },
-                      child: Text(
-                        isVisible ? '- No mostrar' : '+ Agregar otra condicion',
-                        style: Theme.of(context).textTheme.smallBoldTextOrange,
-                      ),
-                    ),
-                    SizedBox(height: height * 0.03),
-                    const Divider(
-                      color: Color(0xFFA2A2A2),
-                      thickness: 1,
-                      height: 5,
-                    ),
-                    SizedBox(height: height * 0.03),
-                    Row(
-                      children: [
-                        Text("CUD",
-                            style:
-                                Theme.of(context).textTheme.cardTitleTextStyle),
-                        const Text(
-                            "  Opcional \n (certificado de discapacidad)",
-                            style: TextStyle(fontSize: 12)),
-                      ],
-                    ),
-                    SizedBox(height: height * 0.04),
-                    const ImagePickerContainer(),
-                    SizedBox(height: height * 0.04),
-                    CustomBigButton(
-                      text: 'Continuar',
-                      onPressed: () => context.push('/fathers_home_screen'),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

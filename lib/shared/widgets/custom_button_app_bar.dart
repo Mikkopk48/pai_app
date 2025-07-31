@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../config/theme/app_theme.dart';
 
 // enum UserRol {father,professional}
 
-class CustomButtonAppBar extends StatelessWidget {
+class CustomButtonAppBar extends StatefulWidget {
   final bool isFather;
   const CustomButtonAppBar({
     super.key,
@@ -13,7 +12,13 @@ class CustomButtonAppBar extends StatelessWidget {
   });
 
   @override
+  State<CustomButtonAppBar> createState() => _CustomButtonAppBarState();
+}
+
+class _CustomButtonAppBarState extends State<CustomButtonAppBar> {
+  @override
   Widget build(BuildContext context) {
+    final location = GoRouterState.of(context).uri.toString();
     String text =
         """PAI es una empresa que actualmente está desarrollando una aplicación para que el proceso de contratación de maestras integradoras para chicos con discapacidad cognitiva sea mucho más sencillo.
 
@@ -40,23 +45,39 @@ Y que así ningun chico se quede sin aprender.""";
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-              onPressed: isFather == true
-                  ? () => context.go('/fathers_home_screen')
-                  : () => context.go('/professionals_home_screen'),
-              icon: const Icon(
-                Icons.home_outlined,
-                color: Colors.white,
-                size: 40,
-              )),
+            onPressed: widget.isFather == true
+                ? () => context.go('/fathers_home_screen')
+                : () => context.go('/professionals_home_screen'),
+            icon: (location == '/professionals_home_screen' ||
+                    location == '/fathers_home_screen')
+                ? const Icon(
+                    Icons.home,
+                    color: Colors.white,
+                    size: 40,
+                  )
+                : const Icon(
+                    Icons.home_outlined,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+          ),
           IconButton(
-              onPressed: isFather == true
-                  ? () => context.go('/fathers_chatslist_screen')
-                  : () => context.go('/professionals_chatslist_screen'),
-              icon: const Icon(
-                Icons.chat_bubble_outline,
-                color: Colors.white,
-                size: 35,
-              )),
+            onPressed: widget.isFather == true
+                ? () => context.go('/fathers_chatslist_screen')
+                : () => context.go('/professionals_chatslist_screen'),
+            icon: (location == '/professionals_chatslist_screen' ||
+                    location == '/fathers_chatslist_screen')
+                ? const Icon(
+                    Icons.chat,
+                    color: Colors.white,
+                    size: 40,
+                  )
+                : const Icon(
+                    Icons.chat_bubble_outline,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+          ),
           const SizedBox(
             width: 30,
           ),
@@ -65,7 +86,7 @@ Y que así ningun chico se quede sin aprender.""";
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text('Sobre PAI'),
-                      content:  SingleChildScrollView(child: Text(text)),
+                      content: SingleChildScrollView(child: Text(text)),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -76,18 +97,27 @@ Y que así ningun chico se quede sin aprender.""";
                   ),
               icon: const Icon(
                 Icons.info_outline_rounded,
+                // Icons.info_rounded,
                 color: Colors.white,
                 size: 35,
               )),
           IconButton(
-              onPressed: isFather == true
-                  ? () => context.go('/fathers_profile_screen')
-                  : () => context.go('/professionals_profile_screen'),
-              icon: const Icon(
-                Icons.person_outline,
-                color: Colors.white,
-                size: 40,
-              )),
+            onPressed: widget.isFather == true
+                ? () => context.go('/fathers_profile_screen')
+                : () => context.go('/professionals_profile_screen'),
+            icon: (location == '/professionals_profile_screen' ||
+                    location == '/fathers_profile_screen')
+                ? const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 40,
+                  )
+                : const Icon(
+                    Icons.person_outline,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+          ),
         ],
       ),
     );
@@ -101,6 +131,7 @@ class AiFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = GoRouterState.of(context).uri.toString();
     return SizedBox(
       height: 80,
       width: 80,
@@ -109,7 +140,11 @@ class AiFloatingActionButton extends StatelessWidget {
           onPressed: () => context.push('/ai_chat_screen'),
           shape: const CircleBorder(),
           child: Image.asset(
-            'assets/images/bot.png',
+            location == '/ai_chat_screen'
+            ? 'assets/images/bot_filled.png'
+            : 'assets/images/bot.png',
+            // 'assets/icons/bot_plus.svg',
+            // 'assets/icons/bot_flled_plus.svg',
             height: 34,
           )),
     );

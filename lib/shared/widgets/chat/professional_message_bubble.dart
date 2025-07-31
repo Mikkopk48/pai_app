@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:pai/config/theme/theme.dart';
-import 'package:pai/presentation/screens/fathers/father_professional_chat_screen.dart';
 import 'package:pai/shared/widgets/widgets.dart';
+
+import '../../../data/data.dart';
 
 class ProfessionalMessageBubble extends StatelessWidget {
   final Message message;

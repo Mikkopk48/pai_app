@@ -42,14 +42,14 @@ class _FathersProfileScreenState extends State<FathersProfileScreen> {
   }
 
   Future<void> _loadProfileData() async {
-    await Future.delayed(const Duration(seconds: 0));
+    // await Future.delayed(const Duration(seconds: 0));
     setState(() {
       profileData = fatherProfileResponse['profile'];
     });
   }
 
   Future<void> _loadReviews() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       reviewsList = fatherReviewsResponse['reviews'];
     });

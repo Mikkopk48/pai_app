@@ -4,22 +4,23 @@ import 'package:pai/shared/widgets/widgets.dart';
 
 import '../../../data/data.dart';
 
-class AiChatScreen extends StatefulWidget {
-  static const name = '/ai_chat_screen';
-  const AiChatScreen({super.key});
+class ProfessionalFatherChatScreen extends StatefulWidget {
+  static const name = '/professional_father_chat_screen';
+  const ProfessionalFatherChatScreen({super.key});
 
   @override
-  State<AiChatScreen> createState() => _AiChatScreenState();
+  State<ProfessionalFatherChatScreen> createState() => _ProfessionalFatherChatScreenState();
 }
 
-class _AiChatScreenState extends State<AiChatScreen> {
+class _ProfessionalFatherChatScreenState extends State<ProfessionalFatherChatScreen> {
   final List<Message> messageList = [
-    Message(text: 'Mensaje de Ai', fromFather: false),
+    Message(text: 'Mensaje de profesional', fromFather: false),
     Message(text: 'Mensaje de padre', fromFather: true),
-    Message(text: 'Mensaje de Ai', fromFather: false),
-    Message(text: 'Pregunta de padre', fromFather: true),
-    // Message()
+    Message(text: 'Mensaje de profesional', fromFather: false),
+    Message(text: 'Respuesta de padre', fromFather: true),
   ];
+
+  final ScrollController _scrollController = ScrollController();
 
   void sendMessage(String text) {
     if (text.trim().isEmpty) return;
@@ -27,19 +28,48 @@ class _AiChatScreenState extends State<AiChatScreen> {
     setState(() {
       messageList.add(Message(text: text, fromFather: true));
     });
+
+    // Desplazar automáticamente al final
+    Future.delayed(Duration(milliseconds: 100), () {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ChatAppBar(title: 'IA de PAI'),
+      appBar: AppBar(
+        elevation: 22,
+        backgroundColor: AppColors.primary,
+        leading: const Padding(
+          padding: EdgeInsets.all(4.0),
+          child: Icon(Icons.account_circle),
+        ),
+        title: Text(
+          'Nombre de Profesional',
+          style: Theme.of(context).textTheme.bigButtonTextStyle,
+        ),
+        centerTitle: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
             Expanded(
               child: ListView.builder(
+                controller: _scrollController,
                 itemCount: messageList.length,
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 itemBuilder: (context, index) {
                   final message = messageList[index];
                   return message.fromFather
@@ -56,41 +86,6 @@ class _AiChatScreenState extends State<AiChatScreen> {
   }
 }
 
-class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-  const ChatAppBar({
-    super.key,
-    required this.title,
-  });
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
-        onPressed: () => Navigator.pop(context),
-      ),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.account_circle, color: Colors.white),
-          onPressed: () {
-            // Acción para el ícono de cuenta
-          },
-        ),
-      ],
-      elevation: 22,
-      backgroundColor: AppColors.primary,
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.bigButtonTextStyle,
-      ),
-      centerTitle: true,
-    );
-  }
-}
 
 // class _ImageBubble extends StatelessWidget {
 //   final String imageUrl;

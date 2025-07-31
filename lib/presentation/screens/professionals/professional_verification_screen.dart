@@ -9,31 +9,29 @@ class ProfessionalsVerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Expanded(
-          child: ListView(
-            children: [
-              CustomCard(
-                child: Column(children: [
-                  const Center(
-                    child: Text(
-                        'Su cuenta está en proceso de confirmación por parte de nuestro equipo...',
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        textAlign: TextAlign.center),
-                  ),
-                  Image.asset('assets/images/logo_pai.png'),
-                ]),
-              ),
-              CustomBigButton(
-                text: 'Conocer la App',
-                onPressed: () => context.go('/professionals_home_screen'),
-              ),
-            ],
-          ),
+    return Scaffold(
+      body: Expanded(
+        child: ListView(
+          children: [
+            CustomCard(
+              child: Column(children: [
+                const Center(
+                  child: Text(
+                      'Su cuenta está en proceso de confirmación por parte de nuestro equipo...',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      textAlign: TextAlign.center),
+                ),
+                Image.asset('assets/images/logo_pai.png'),
+              ]),
+            ),
+            CustomBigButton(
+              text: 'Conocer la App',
+              onPressed: () => context.go('/professionals_home_screen'),
+            ),
+          ],
         ),
       ),
     );

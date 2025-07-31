@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pai/presentation/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/job_offer_detail_screen',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
@@ -93,6 +93,10 @@ final appRouter = GoRouter(
       path: '/professionals_chatslist_screen',
       name: ProfessionalsChatListScreen.name,
       builder: (context, state) => const ProfessionalsChatListScreen(),
+    ),    GoRoute(
+      path: '/professional_father_chat_screen',
+      name: FatherProfessionalChatScreen.name,
+      builder: (context, state) => const FatherProfessionalChatScreen(),
     ),
     GoRoute(
       path: '/professionals_profile_screen',

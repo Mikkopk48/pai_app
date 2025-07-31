@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pai/config/theme/theme.dart';
 import 'package:pai/shared/widgets/widgets.dart';
 
-class Message {
-  final String text;
-  final String? imageUrl;
-  final bool fromFather;
+import '../../../data/data.dart';
 
-  Message({required this.text, this.imageUrl, required this.fromFather});
-}
+
 
 class FatherProfessionalChatScreen extends StatefulWidget {
   static const name = '/father_professional_chat_screen';
@@ -20,10 +16,10 @@ class FatherProfessionalChatScreen extends StatefulWidget {
 
 class _FatherProfessionalChatScreenState extends State<FatherProfessionalChatScreen> {
   final List<Message> messageList = [
-    Message(text: 'Mensaje de profesional', fromFather: false),
-    Message(text: 'Mensaje de padre', fromFather: true),
-    Message(text: 'Mensaje de profesional', fromFather: false),
-    Message(text: 'Respuesta de padre', fromFather: true),
+    Message(text: 'Mensaje de padre', fromFather: false),
+    Message(text: 'Mensaje de profesional', fromFather: true),
+    Message(text: 'Mensaje de padre', fromFather: false),
+    Message(text: 'Respuesta de profesional', fromFather: true),
     // Message()
   ];
 
@@ -37,38 +33,34 @@ class _FatherProfessionalChatScreenState extends State<FatherProfessionalChatScr
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(elevation: 22,
-          backgroundColor: AppColors.primary,
-          leading: const Padding(
-            padding: EdgeInsets.all(4.0),
-            child: Icon(Icons.account_circle),
-          ),
-          title: Text('Nombre de Profesional',
-          style: Theme.of(context).textTheme.bigButtonTextStyle,),
-          centerTitle: false,
+    return Scaffold(
+      appBar: AppBar(elevation: 22,
+        backgroundColor: AppColors.primary,
+        leading: const Padding(
+          padding: EdgeInsets.all(4.0),
+          child: Icon(Icons.account_circle),
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: messageList.length,
-                    itemBuilder: (context, index) {
-                      final message = messageList[index];
-                      return message.fromFather
-                          ? FatherMessageBubble(message: message)
-                          : ProfessionalMessageBubble(message: message);
-                    },
-                  ),
-                ),
-                MessageFieldBox(onValue: sendMessage),
-              ],
+        title: Text('Nombre de Profesional',
+        style: Theme.of(context).textTheme.bigButtonTextStyle,),
+        centerTitle: false,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: messageList.length,
+                itemBuilder: (context, index) {
+                  final message = messageList[index];
+                  return message.fromFather
+                      ? FatherMessageBubble(message: message)
+                      : ProfessionalMessageBubble(message: message);
+                },
+              ),
             ),
-          ),
+            MessageFieldBox(onValue: sendMessage),
+          ],
         ),
       ),
     );

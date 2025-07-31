@@ -1,9 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:pai/presentation/screens/fathers/father_professional_chat_screen.dart';
 
 import '../../../config/theme/theme.dart';
+import '../../../data/data.dart';
 
 class FatherMessageBubble extends StatelessWidget {
   final Message message;

@@ -10,36 +10,66 @@ class UserSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
-      child: Scaffold(
-        body: CustomCard(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text('Yo soy:',style:Theme.of(context).textTheme.cardTitleTextStyle),
-                const _RoleButton(
-                  location: '/professionals_data1',
-                  text: 'Soy un profecional de apoyo a la integración',
-                  color: AppColors.primary,
+    final width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: _CustomCardModified(
+          child: Column(
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Text('Cuál es tu perfil:',
+                      style: Theme.of(context).textTheme.cardTitleTextStyle),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const _RoleButton(
-                  location: '/fathers_child_data1',
-                  text: 'Soy un padre en busca de profesionales',
-                  color: AppColors.secondary,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const _RoleButton(
-                  location: '/ai_chat_screen',
-                  text: 'Soy un profesor que quiere usar la IA de PAI',
-                  color: AppColors.background,
-                ),
-              ],
-            ),
+              ),
+               Row(
+                children: [
+                  const _RoleButton(
+                    location: '/professionals_data1',
+                    text: 'Profesional de apoyo a la integración',
+                    color: AppColors.primary,
+                    bottomRight: true,
+                    topRight: true,
+                  ),
+                  SizedBox(width: width*0.04,),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  
+                  SizedBox(width: width*0.1,),
+                  const _RoleButton(
+                    location: '/fathers_child_data1',
+                    text: 'Tutor que busca profesionales',
+                    color: AppColors.secondary,
+                    bottomLeft: true,
+                    topLeft: true,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  const _RoleButton(
+                    location: '/ai_chat_screen',
+                    text: 'Profesor que quiere usar la IA de PAI',
+                    color: AppColors.background,
+                    bottomRight: true,
+                    topRight: true,
+                  ),
+                  SizedBox(width: width*0.04,),
+                ],
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+            ],
           ),
         ),
       ),
@@ -51,24 +81,38 @@ class _RoleButton extends StatelessWidget {
   final String text;
   final Color color;
   final String location;
+  final bool topLeft;
+  final bool bottomRight;
+  final bool bottomLeft;
+  final bool topRight;
 
   const _RoleButton({
     required this.text,
     required this.color,
     required this.location,
+    this.topLeft = false,
+    this.bottomRight = false,
+    this.bottomLeft = false,
+    this.topRight = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () => context.push(location),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-        width: 240,
+        width: width * 0.75,
         height: 230,
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.only(
+            topLeft: topLeft ? const Radius.circular(100) : Radius.zero,
+            bottomLeft: bottomLeft ? const Radius.circular(100) : Radius.zero,
+            bottomRight: bottomRight ? const Radius.circular(100) : Radius.zero,
+            topRight: topRight ? const Radius.circular(100) : Radius.zero,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
@@ -89,6 +133,32 @@ class _RoleButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _CustomCardModified extends StatelessWidget {
+  final Widget? child;
+  const _CustomCardModified({this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Container(
+          width: width * 0.85,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 20,
+                offset: const Offset(2, 2),
+              ),
+            ],
+          ),
+          child: child),
     );
   }
 }

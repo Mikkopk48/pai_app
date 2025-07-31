@@ -24,6 +24,9 @@ flutter:
   assets:
     - assets/images/logo_pai.png
     - assets/images/bot.png
+    - assets/icons/bot_flled_plus.svg
+    - assets/icons/bot_plus.svg
+    - assets/icons/logo_plus.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

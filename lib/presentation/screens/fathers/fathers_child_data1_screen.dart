@@ -10,54 +10,52 @@ class FathersChildData1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomCard(
-                child: Column(
-                  children: [
-                    Text(
-                      'Datos de su hijo:',
-                      style: Theme.of(context).textTheme.cardTitleTextStyle,
-                    ),
-                     SizedBox(
-                      height: height*0.05,
-                    ),
-                    const CustomTextFormField(
-                      label: 'Nombre Completo:',
-                    ),
-                    const CustomTextFormField(
-                      label: 'Fecha de nacimiento:',
-                    ),
-                    const CustomTextFormField(
-                      label: 'Nivel:',
-                    ),
-                    const CustomTextFormField(
-                      label: 'Grado/Año:',
-                    ),
-                    const CustomTextFormField(
-                      label: 'Colegio:',
-                    ),
-                     SizedBox(
-                      height: 100,
-                    ),
-                  ],
-                ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomCard(
+              child: Column(
+                children: [
+                  Text(
+                    'Datos de su hijo:',
+                    style: Theme.of(context).textTheme.cardTitleTextStyle,
+                  ),
+                   SizedBox(
+                    height: height*0.05,
+                  ),
+                  const CustomTextFormField(
+                    label: 'Nombre Completo:',
+                  ),
+                  const CustomTextFormField(
+                    label: 'Fecha de nacimiento:',
+                  ),
+                  const CustomTextFormField(
+                    label: 'Nivel:',
+                  ),
+                  const CustomTextFormField(
+                    label: 'Grado/Año:',
+                  ),
+                  const CustomTextFormField(
+                    label: 'Colegio:',
+                  ),
+                   SizedBox(
+                    height: 100,
+                  ),
+                ],
               ),
-              SizedBox(
-               height: height*0.03,
+            ),
+            SizedBox(
+             height: height*0.03,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: CustomBigButton(
+                text: 'Continuar',
+                onPressed: () => context.push('/fathers_child_data2'),
               ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: CustomBigButton(
-                  text: 'Continuar',
-                  onPressed: () => context.push('/fathers_child_data2'),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

@@ -33,7 +33,7 @@ class _FathersChatListScreenState
   }
 
   Future<void> _loadChats() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       chatsList = chatDataResponse['chats'];
     });
@@ -41,65 +41,63 @@ class _FathersChatListScreenState
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            const CustomAppBar(text: 'Tus Chats'),
-            const SearchBox(),
-            Expanded(
-              child: chatsList.isEmpty
-                  ? const Center(child: CircularProgressIndicator())
-                  : ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: chatsList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final element = chatsList[index];
-                        return InkWell(
-                          onTap: () => context.push('/father_professional_chat_screen'),
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(right: 20.0),
-                                    child: CircleAvatar(
-                                        child: Icon(Icons.person)),
+    return Scaffold(
+      body: Column(
+        children: [
+          const CustomAppBar(text: 'Tus Chats'),
+          const SearchBox(),
+          Expanded(
+            child: chatsList.isEmpty
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: chatsList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final element = chatsList[index];
+                      return InkWell(
+                        onTap: () => context.push('/father_professional_chat_screen'),
+                        child: Card(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 20.0),
+                                  child: CircleAvatar(
+                                      child: Icon(Icons.person)),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        element['name'],
+                                        style: const TextStyle(fontSize: 20),
+                                      ),
+                                      Text(
+                                        element['lastMessage'],
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
                                   ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          element['name'],
-                                          style: const TextStyle(fontSize: 20),
-                                        ),
-                                        Text(
-                                          element['lastMessage'],
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        );
-                      },
-                    ),
-            ),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: const AiFloatingActionButton(),
-        bottomNavigationBar: const CustomButtonAppBar(isFather: true),
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const AiFloatingActionButton(),
+      bottomNavigationBar: const CustomButtonAppBar(isFather: true),
     );
   }
 }

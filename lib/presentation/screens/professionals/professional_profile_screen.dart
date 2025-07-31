@@ -50,7 +50,7 @@ class _ProfessionalsProfileScreenState extends State<ProfessionalsProfileScreen>
   }
 
   Future<void> _loadDetailData() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       professionalData = professionalDetailResponse['profile'];
     });
@@ -64,36 +64,34 @@ class _ProfessionalsProfileScreenState extends State<ProfessionalsProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: professionalData == null
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CustomAppBar(text: 'Tu perfil'),
-                    _ProfileCard(professionalData: professionalData),
-                    _AboutProfessionalCard(professionalData: professionalData),
-                    const CustomBigButton(text: 'Editar',color: AppColors.primary,),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Opiniones',
-                        style: Theme.of(context).textTheme.cardTitleTextStyle,
-                      ),
+    return Scaffold(
+      body: professionalData == null
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomAppBar(text: 'Tu perfil'),
+                  _ProfileCard(professionalData: professionalData),
+                  _AboutProfessionalCard(professionalData: professionalData),
+                  const CustomBigButton(text: 'Editar',color: AppColors.primary,),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Opiniones',
+                      style: Theme.of(context).textTheme.cardTitleTextStyle,
                     ),
-                    ...reviewsList.map(
-                      (review) => ReviewCard(review: review),
-                    ),
-                    const SizedBox(height: 100),
-                  ],
-                ),
+                  ),
+                  ...reviewsList.map(
+                    (review) => ReviewCard(review: review),
+                  ),
+                  const SizedBox(height: 100),
+                ],
               ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: const AiFloatingActionButton(),
-        bottomNavigationBar: const CustomButtonAppBar(isFather: false,),
-      ),
+            ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const AiFloatingActionButton(),
+      bottomNavigationBar: const CustomButtonAppBar(isFather: false,),
     );
   }
 }

@@ -33,7 +33,7 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
   }
 
   Future<void> _loadProfessionals() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       professionalsList = professionalsResonse['professionals'];
     });
@@ -49,7 +49,14 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
           Expanded(
             child: professionalsList.isEmpty
                 ? const Center(child: CircularProgressIndicator())
-                : SmallCard(elementsList: professionalsList),
+                : ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    itemCount: professionalsList.length,
+                    itemBuilder: (context, index) {
+                      final professional = professionalsList[index];
+                      return SmallCard(elementsList: [professional], route: '/professional_detail_screen',);
+                    },
+                  ),
           ),
         ],
       ),
