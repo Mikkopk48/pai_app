@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pai/config/theme/theme.dart';
-import 'package:pai/shared/widgets/alert/CustomJobOfferAlertDialog.dart';
+import 'package:pai/shared/widgets/alert/custom_joboffer_alertdialog.dart';
 import 'package:pai/shared/widgets/widgets.dart';
 
 class FathersHomeScreen extends StatefulWidget {

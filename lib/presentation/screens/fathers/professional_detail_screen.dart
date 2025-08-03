@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pai/config/theme/theme.dart';
 import '../../../shared/widgets/widgets.dart';
 
@@ -50,7 +51,7 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
   }
 
   Future<void> _loadDetailData() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       professionalData = professionalDetailResponse['profile'];
     });
@@ -66,7 +67,10 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: professionalData == null
-          ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
+          ? const Center(
+              child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ))
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +78,10 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
                   const CustomAppBar(text: 'Su perfil'),
                   _ProfileCard(professionalData: professionalData),
                   _AboutProfessionalCard(professionalData: professionalData),
-                  const CustomBigButton(text: 'Enviar mensaje',color: AppColors.primary,),
+                  const CustomBigButton(
+                    text: 'Enviar mensaje',
+                    color: AppColors.primary,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
@@ -91,7 +98,9 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const AiFloatingActionButton(),
-      bottomNavigationBar: const CustomButtonAppBar(isFather: true,),
+      bottomNavigationBar: const CustomButtonAppBar(
+        isFather: true,
+      ),
     );
   }
 }
@@ -108,7 +117,7 @@ class _AboutProfessionalCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
-         color: const Color(0xFFFFFFFF),
+        color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -157,7 +166,7 @@ class _ProfileCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
-         color: const Color(0xFFFFFFFF),
+        color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -189,8 +198,7 @@ class _ProfileCard extends StatelessWidget {
                       children: [
                         Text(
                           professionalData!['location'],
-                          style:
-                              const TextStyle(fontWeight: FontWeight.w700),
+                          style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -204,18 +212,13 @@ class _ProfileCard extends StatelessWidget {
                       professionalData!['lookingJob'] == true
                           ? 'Busca trabajo'
                           : 'No busca trabajo',
-                      style:
-                          const TextStyle(fontSize: 20,color: Colors.green,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 10),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      label: const Text('Puntuar'),
-                      icon: const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                    ),
+                    const RateButton(),
                   ],
                 ),
               ),
@@ -237,7 +240,7 @@ class ReviewCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Card(
-         color: const Color(0xFFFFFFFF),
+        color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
