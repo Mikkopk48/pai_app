@@ -17,6 +17,7 @@ class ReviewList extends StatelessWidget {
         itemBuilder: (context, index) {
           final review = reviewsList[index];
           return Card(
+             color: const Color(0xFFFFFFFF),
             child: Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),

@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pai/presentation/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/fathers_home_screen',
   routes: [
     GoRoute(
       path: '/',
@@ -23,6 +23,11 @@ final appRouter = GoRouter(
       path: '/reset_screen',
       name: ResetScreen.name,
       builder: (context, state) => const ResetScreen(),
+    ),
+    GoRoute(
+      path: '/new_password_screen',
+      name: NewPasswordScreen.name,
+      builder: (context, state) => const NewPasswordScreen(),
     ),
     GoRoute(
       path: '/user_selection_screen',
@@ -93,7 +98,8 @@ final appRouter = GoRouter(
       path: '/professionals_chatslist_screen',
       name: ProfessionalsChatListScreen.name,
       builder: (context, state) => const ProfessionalsChatListScreen(),
-    ),    GoRoute(
+    ),
+    GoRoute(
       path: '/professional_father_chat_screen',
       name: FatherProfessionalChatScreen.name,
       builder: (context, state) => const FatherProfessionalChatScreen(),

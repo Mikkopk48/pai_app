@@ -12,6 +12,7 @@ class AppColors {
 class AppTheme {
   ThemeData getTheme() {
     return ThemeData(
+      fontFamily: 'Poppins',
       useMaterial3: true,
       scaffoldBackgroundColor: AppColors.background,
       textTheme: const TextTheme(),

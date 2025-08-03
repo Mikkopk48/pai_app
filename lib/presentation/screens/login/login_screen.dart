@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                     height: 70,
                   ),
                   CustomBigButton(
-                      text: 'Insgresar',
+                      text: 'Ingresar',
                       onPressed: () => context.push('/user_selection_screen')),
                   const SizedBox(
                     height: 40,

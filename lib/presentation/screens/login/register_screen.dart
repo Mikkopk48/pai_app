@@ -51,7 +51,8 @@ class RegisterScreen extends StatelessWidget {
               CustomBigButton(
                 text: 'Registrarse',
                 onPressed: () => context.push('/user_selection_screen'),
-              )
+              ),
+              const SizedBox(width: 30,)
             ],
           ),
         ),

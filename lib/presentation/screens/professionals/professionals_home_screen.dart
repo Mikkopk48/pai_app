@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pai/shared/widgets/widgets.dart';
 
+import '../../../config/theme/theme.dart';
+
 class ProfessionalsHomeScreen extends StatefulWidget {
   static const name = '/professionals_home_screen';
 
@@ -48,7 +50,7 @@ class _ProfessionalsHomeScreenState extends State<ProfessionalsHomeScreen> {
           const SearchBox(),
           Expanded(
             child: offersList.isEmpty
-                ? const Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
                 : OffersList(
                     offersList: offersList,
                     route: '/job_offer_detail_screen',
@@ -113,7 +115,6 @@ class OffersList extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 8),
-                            // You can add more fields here if needed
                           ],
                         ),
                         const SizedBox(height: 4),

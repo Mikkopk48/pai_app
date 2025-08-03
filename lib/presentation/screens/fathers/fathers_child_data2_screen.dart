@@ -61,21 +61,21 @@ class FathersChildData2Screen extends ConsumerWidget {
                       Text("CUD",
                           style:
                               Theme.of(context).textTheme.cardTitleTextStyle),
-                      const Text(
-                          "  Opcional \n (certificado de discapacidad)",
+                      const SizedBox(height: 100),
+                      const Text("  Opcional \n (certificado de discapacidad)",
                           style: TextStyle(fontSize: 12)),
                     ],
                   ),
                   SizedBox(height: height * 0.04),
                   const ImagePickerContainer(),
-                  SizedBox(height: height * 0.04),
-                  CustomBigButton(
-                    text: 'Continuar',
-                    onPressed: () => context.push('/fathers_home_screen'),
-                  )
                 ],
               ),
             ),
+            CustomBigButton(
+              text: 'Continuar',
+              onPressed: () => context.push('/fathers_home_screen'),
+            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),

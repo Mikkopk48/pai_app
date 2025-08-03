@@ -25,12 +25,17 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     color: Color(0xDD000000),
   );
+  static const TextStyle smallBoldText = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    // color: AppColors.secondary,
+  );
   static const TextStyle smallBoldTextOrange = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w700,
     color: AppColors.secondary,
   );
-    static const TextStyle smallBoldTextBlue = TextStyle(
+  static const TextStyle smallBoldTextBlue = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w700,
     color: AppColors.primary,

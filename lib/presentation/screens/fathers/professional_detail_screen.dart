@@ -66,7 +66,7 @@ class _ProfessionalDetailScreenState extends State<ProfessionalDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: professionalData == null
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,6 +108,7 @@ class _AboutProfessionalCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
+         color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -156,6 +157,7 @@ class _ProfileCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
+         color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -235,6 +237,7 @@ class ReviewCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Card(
+         color: const Color(0xFFFFFFFF),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

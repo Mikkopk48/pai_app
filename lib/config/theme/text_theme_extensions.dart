@@ -6,6 +6,7 @@ extension CustomTextTheme on TextTheme {
   TextStyle get inputTextTextStyle => AppTextStyles.inputTextTextStyle;
   TextStyle get bigButtonTextStyle => AppTextStyles.bigButtonTextStyle;
   TextStyle get smallTextStyle => AppTextStyles.smallTextStyle;
+  TextStyle get smallBoldText => AppTextStyles.smallBoldText;
   TextStyle get smallBoldTextOrange => AppTextStyles.smallBoldTextOrange;
   TextStyle get smallBoldTextBlue => AppTextStyles.smallBoldTextBlue;
 }

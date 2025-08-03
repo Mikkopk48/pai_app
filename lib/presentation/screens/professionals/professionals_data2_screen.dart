@@ -16,6 +16,7 @@ class ProfessionalsData2Screen extends StatelessWidget {
         child: Column(
           children: [
             CustomCard(
+              
               child: Column(
                 children: [
                   Text(
@@ -32,17 +33,18 @@ class ProfessionalsData2Screen extends StatelessWidget {
                     label: 'Título Habilitante:',
                   ),
                   // SizedBox(height: height * 0.08),
+                  SizedBox(height: height * 0.05),
     
                   const ImagePickerContainer(),
                   SizedBox(height: height * 0.03),
                   SizedBox(
-                    height: height * 0.20,
+                    height: height * 0.05,
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: height * 0.03,
+              height: height * 0.02,
             ),
             Padding(
               padding: const EdgeInsets.all(18.0),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pai/shared/widgets/widgets.dart';
 
+import '../../../config/theme/theme.dart';
+
 class ProfessionalsChatListScreen extends StatefulWidget {
   static const name = '/professionals_chatslist_screen';
   const ProfessionalsChatListScreen({super.key});
@@ -48,7 +50,7 @@ class _ProfessionalsChatListScreenState
           const SearchBox(),
           Expanded(
             child: chatsList.isEmpty
-                ? const Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
                 : ListView.builder(
                     padding: const EdgeInsets.all(8),
                     itemCount: chatsList.length,
@@ -57,6 +59,7 @@ class _ProfessionalsChatListScreenState
                       return InkWell(
                         onTap: () => context.push('/father_professional_chat_screen'),
                         child: Card(
+                           color: const Color(0xFFFFFFFF),
                           margin: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
                           child: Padding(

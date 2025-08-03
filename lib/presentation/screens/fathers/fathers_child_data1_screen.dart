@@ -39,7 +39,7 @@ class FathersChildData1Screen extends StatelessWidget {
                   const CustomTextFormField(
                     label: 'Colegio:',
                   ),
-                   SizedBox(
+                   const SizedBox(
                     height: 100,
                   ),
                 ],

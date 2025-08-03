@@ -1,6 +1,7 @@
 export 'screens/login/start_screen.dart';
 export 'screens/login/register_screen.dart';
 export 'screens/login/login_screen.dart';
+export 'screens/login/new_password_screen.dart';
 export 'screens/login/user_selection_screen.dart';
 export 'screens/login/reset_screen.dart';
 export 'screens/fathers/fathers_child_data1_screen.dart';

@@ -77,7 +77,10 @@ class _FathersProfileScreenState extends State<FathersProfileScreen> {
                   ),
                   const SizedBox(height: 8),
                   if (reviewsList.isEmpty)
-                    const Center(child: CircularProgressIndicator())
+                    const Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.primary,
+                    ))
                   else
                     ...reviewsList.map((review) => ReviewCard(review: review)),
                   const SizedBox(height: 100),
@@ -86,7 +89,9 @@ class _FathersProfileScreenState extends State<FathersProfileScreen> {
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const AiFloatingActionButton(),
-      bottomNavigationBar: const CustomButtonAppBar(isFather: true,),
+      bottomNavigationBar: const CustomButtonAppBar(
+        isFather: true,
+      ),
     );
   }
 }
@@ -116,13 +121,14 @@ class _ProfileCard extends StatelessWidget {
                 children: [
                   Text(
                     profileData['name'],
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 18),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
+                  const Text(
                     'Condición/es de su hijo:',
-                  ),Text(
-                    profileData['conditionChild']
                   ),
+                  Text(profileData['conditionChild']),
                   Row(
                     children: [
                       const Icon(Icons.star, color: Colors.amber),

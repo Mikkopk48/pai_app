@@ -55,7 +55,7 @@ A convenir según experiencia y disponibilidad. Se ofrece pago mensual por trans
   }
 
   Future<void> _loadDetailData() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() {
       offerData = offerDetailResponse['profile'];
     });
@@ -65,7 +65,7 @@ A convenir según experiencia y disponibilidad. Se ofrece pago mensual por trans
   Widget build(BuildContext context) {
     return Scaffold(
       body: offerData == null
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
           : SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(
