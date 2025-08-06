@@ -54,8 +54,7 @@ A convenir según experiencia y disponibilidad. Se ofrece pago mensual por trans
     _loadDetailData();
   }
 
-  Future<void> _loadDetailData() async {
-    await Future.delayed(const Duration(seconds: 0));
+  void _loadDetailData() {
     setState(() {
       offerData = offerDetailResponse['profile'];
     });
@@ -65,57 +64,63 @@ A convenir según experiencia y disponibilidad. Se ofrece pago mensual por trans
   Widget build(BuildContext context) {
     return Scaffold(
       body: offerData == null
-          ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
+          ? const Center(
+              child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ))
           : SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomAppBar(text: 'Oferta de Trabajo'),
                   const SizedBox(height: 16),
-                  Card(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    elevation: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(offerData!['title'] ?? 'Sin título',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .cardTitleTextStyle),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Solicitado por: ${offerData!['fatherName'] ?? 'Desconocido'}',
-                            style: Theme.of(context).textTheme.smallTextStyle,
-                          ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              const Icon(Icons.location_on, size: 20),
-                              const SizedBox(width: 4),
-                              Text(offerData!['location'] ?? 'Sin ubicación'),
-                            ],
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Requiere: ${offerData!['degreeRequired'] ?? ''}',
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          const Divider(height: 24),
-                          Text(
-                            offerData!['description'] ?? '',
-                          ),
-                          CustomBigButton(
-                            text: 'Comunicarme',
-                            color: AppColors.primary,
-                            onPressed: () => context.push('/professional_father_chat_screen'),
-                          )
-                        ],
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Card(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      elevation: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(offerData!['title'] ?? 'Sin título',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .cardTitleTextStyle),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Solicitado por: ${offerData!['fatherName'] ?? 'Desconocido'}',
+                              style: Theme.of(context).textTheme.smallTextStyle,
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                const Icon(Icons.location_on, size: 20),
+                                const SizedBox(width: 4),
+                                Text(offerData!['location'] ?? 'Sin ubicación'),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Requiere: ${offerData!['degreeRequired'] ?? ''}',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const Divider(height: 24),
+                            Text(
+                              offerData!['description'] ?? '',
+                            ),
+                            CustomBigButton(
+                              text: 'Comunicarme',
+                              color: AppColors.primary,
+                              onPressed: () => context
+                                  .push('/professional_father_chat_screen'),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

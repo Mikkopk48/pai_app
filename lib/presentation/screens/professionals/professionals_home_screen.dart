@@ -43,14 +43,28 @@ class _ProfessionalsHomeScreenState extends State<ProfessionalsHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const JobsFilterDrawer(),
       body: Column(
         children: [
           const CustomAppBar(text: 'Ofertas Disponibles'),
           const SearchBox(),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Row(
+              children: [
+                FilterButton(scaffoldKey: scaffoldKey),
+              ],
+            ),
+          ),
           Expanded(
             child: offersList.isEmpty
-                ? const Center(child: CircularProgressIndicator(color: AppColors.primary,))
+                ? const Center(
+                    child: CircularProgressIndicator(
+                    color: AppColors.primary,
+                  ))
                 : OffersList(
                     offersList: offersList,
                     route: '/job_offer_detail_screen',

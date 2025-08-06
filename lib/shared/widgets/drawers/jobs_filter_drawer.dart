@@ -3,14 +3,14 @@ import 'package:pai/config/theme/theme.dart';
 
 import '../../../constants/constants.dart';
 
-class CustomFilterDrawer extends StatefulWidget {
-  const CustomFilterDrawer({super.key});
+class JobsFilterDrawer extends StatefulWidget {
+  const JobsFilterDrawer({super.key});
 
   @override
-  State<CustomFilterDrawer> createState() => _CustomFilterDrawerState();
+  State<JobsFilterDrawer> createState() => _JobsFilterDrawerState();
 }
 
-class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
+class _JobsFilterDrawerState extends State<JobsFilterDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -21,7 +21,7 @@ class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
             children: [
               ListTile(
                 title: Text(
-                  "Tipo",
+                  "Tiempo",
                   style: Theme.of(context).textTheme.smallBoldText,
                 ),
               ),
@@ -86,24 +86,6 @@ class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
                 children: locationsMap.keys
                     .map((place) => _tile(place, locationsMap))
                     .toList(),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Divider(
-                  color: Color.fromARGB(255, 126, 125, 125),
-                  thickness: 1,
-                  height: 4,
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Tipo",
-                  style: Theme.of(context).textTheme.smallBoldText,
-                ),
-              ),
-              Column(
-                children:
-                    typeMap.keys.map((place) => _tile(place, typeMap)).toList(),
               ),
             ],
           ),

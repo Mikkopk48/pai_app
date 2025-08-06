@@ -32,6 +32,7 @@ class RateButton extends StatelessWidget {
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => const Icon(
                   Icons.star,
+                  size: 10,
                   color: Colors.amber,
                 ),
                 onRatingUpdate: (rating) {

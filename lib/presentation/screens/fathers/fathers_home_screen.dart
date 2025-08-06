@@ -46,7 +46,7 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
-      drawer: const CustomFilterDrawer(),
+      drawer: const ProfessionalsFilterDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,16 +56,7 @@ class _FathersHomeScreenState extends State<FathersHomeScreen> {
             padding: const EdgeInsets.only(left: 20.0),
             child: Row(
               children: [
-                FilledButton.icon(
-                  onPressed: () {
-                    scaffoldKey.currentState?.openDrawer();
-                  },
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Color(0xFF0077FF)),
-                  ),
-                  icon: const Icon(Icons.menu),
-                  label: const Text('Filtros'),
-                ),
+                FilterButton(scaffoldKey: scaffoldKey),
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(right: 20.0),
