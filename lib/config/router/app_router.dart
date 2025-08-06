@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pai/presentation/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/professional_detail_screen',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',

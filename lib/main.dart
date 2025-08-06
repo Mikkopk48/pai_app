@@ -8,13 +8,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pai/config/router/app_router.dart';
 import 'package:pai/config/theme/app_theme.dart';
 
-void main() async{
+void main() async {
   runApp(const ProviderScope(child: MainApp()));
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp, 
+    DeviceOrientation.portraitUp,
   ]);
-
 }
 
 class MainApp extends StatelessWidget {
@@ -28,5 +27,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-

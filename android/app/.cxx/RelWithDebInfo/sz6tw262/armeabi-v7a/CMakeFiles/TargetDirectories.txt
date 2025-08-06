@@ -1,0 +1,2 @@
+/Users/mikkopiaggio/Desktop/flutter proyects/pai_app/android/app/.cxx/RelWithDebInfo/sz6tw262/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/mikkopiaggio/Desktop/flutter proyects/pai_app/android/app/.cxx/RelWithDebInfo/sz6tw262/armeabi-v7a/CMakeFiles/rebuild_cache.dir
